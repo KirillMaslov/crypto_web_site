@@ -1,0 +1,1106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+$font-family: "Montserrat",
+'Montserrat Alternates',
+'Roboto Serif',
+'Roboto Mono',
+sans-serif;
+$color--dark-blue: rgba(39, 55, 92, 1);
+$color--blue: rgba(0, 78, 201, 1);
+$color--light-blue: rgba(0, 194, 255, 1);
+$color--white: rgba(255, 255, 255, 1);
+$color--green: rgba(52, 160, 136, 1);
+
+@mixin onDesktop {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+
+
+$h1_font_size: 45px !default;
+$h1_line_height: 58px !default;
+$h2_font_size: 34px;
+$h2_line_height: 50px;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: inherit;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: black;
+}
+
+.mobile-break {
+    display: block;
+
+    @include onDesktop {
+        display: none;
+    }
+}
+
+.desktop-break {
+    display: none;
+
+    @include onDesktop {
+        display: block;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.page {
+    scroll-behavior: smooth;
+    font-family: $font-family;
+
+    &__body {
+        margin: 0;
+        height: 100%;
+
+        &--with-menu {
+            overflow: hidden;
+        }
+    }
+
+    &__menu {
+        margin: 0;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+
+        transform: translateX(110%);
+        transition: transform 0.3s;
+
+        &:target {
+            transform: translate(0);
+        }
+    }
+}
+
+.menu {
+    z-index: 1;
+    height: max-content;
+    width: 160px;
+    background: rgba(70, 40, 112, 1);
+    border-radius: 13px;
+
+
+    &__container {
+        position: relative;
+        padding-left: 20px;
+        padding-right: 22px;
+        padding-bottom: 35px;
+        padding-top: 19px;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__item {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__link {
+        font-family: 'Roboto Serif', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 17.57px;
+
+        color: $color--white;
+
+    }
+
+    &__close {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+
+        &-link {
+            width: 16px;
+            height: 16px;
+            background-image: url('./images/cross_img.svg');
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    &__text {
+        text-transform: uppercase;
+        margin: 0;
+        margin-left: 5px;
+        font-size: 12px;
+    }
+
+    &__line {
+        margin-left: 18px;
+        height: 44px;
+        width: 44px;
+        transform: rotate(90deg);
+    }
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 26px;
+    overflow: hidden;
+
+    @include onDesktop {
+        padding-bottom: 92px;
+    }
+
+    &__menu {
+        &-link {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            height: 15px;
+            width: 36px;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+                transform: scale(120%);
+            }
+        }
+
+        &-bar {
+            width: 36px;
+            height: 3px;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 660px;
+
+        height: 640px;
+        background: radial-gradient(circle, rgba(89, 51, 141, 0.7) 20%, rgba(89, 51, 141, 0) 70%);
+        transform: translateX(-50%) translateY(-50%);
+        /* Фіолетовий градієнт, який розмивається */
+        border-radius: 50%;
+
+        z-index: -1;
+
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 100%;
+        max-width: 1512px;
+        margin: 0 auto;
+        padding: 0 23px;
+
+        @include onDesktop {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 208px;
+            padding-right: 106px;
+
+        }
+
+        &-icon {
+            position: absolute;
+            display: block;
+
+            @include onDesktop {
+                display: none;
+            }
+
+            &--1 {
+                width: 67px;
+                height: 69px;
+                bottom: 38px;
+                left: 34px;
+            }
+
+            &--2 {
+                width: 34px;
+                height: 35px;
+                top: 24px;
+                left: 118px - 23px;
+            }
+
+            &--3 {
+                width: 53px;
+                height: 89px;
+                top: 25px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            &--4 {
+                width: 35px;
+                height: 29px;
+                top: 80px;
+                right: 94px;
+            }
+
+            &--5 {
+                width: 64px;
+                height: 62px;
+                top: 12px;
+                right: 18px;
+            }
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+
+            @include onDesktop {
+                align-items: baseline;
+            }
+        }
+
+        &-name {
+            display: none;
+            position: relative;
+            font-family: "Roboto Mono", sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 26.38px;
+            padding-left: 55px;
+            color: $color--white;
+
+            &::before {
+                display: block;
+                position: absolute;
+                width: 48px;
+                height: 2px;
+                content: "";
+                left: 0;
+                bottom: 0;
+                background-color: $color--green;
+
+            }
+
+            @include onDesktop {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+        }
+
+        &-title {
+            font-family: "Montserrat Alternates", sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 36.57px;
+            text-align: center;
+            margin-bottom: 21px;
+
+            &--small {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 24.38px;
+
+                @include onDesktop {
+                    font-size: 40px;
+                    line-height: 48.76px;
+                }
+            }
+
+            &--white {
+                color: $color--white;
+            }
+
+            &--blue {
+                color: $color--light-blue;
+            }
+
+            @include onDesktop {
+                text-align: start;
+                font-size: 40px;
+                line-height: 48.76px;
+                margin-bottom: 30px;
+            }
+        }
+
+        &-buttons {
+            display: flex;
+            gap: 19px;
+            align-items: center;
+
+            @include onDesktop {
+                gap: 10px;
+            }
+        }
+
+        &-button {
+            // font-family: "Roboto Serif", sans-serif;
+            font-family: 'Montserrat Alternates',serif;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 14px;
+            height: max-content;
+
+            text-decoration: none;
+            border-radius: 6px;
+            border: none;
+            padding: 7px;
+
+            @include onDesktop {
+                font-size: 15px;
+                line-height: 17.57px;
+                padding: 8px;
+            }
+
+            &--1 {
+                background-color: $color--green;
+                padding: 7px 16px;
+
+                &:active {
+                    background-color: rgb(48, 125, 108);
+                }
+
+                @include onDesktop {
+                    padding-top: 8px;
+                    padding-bottom: 8px;
+                    padding-right: 20px;
+                }
+            }
+
+            &--2 {
+                background-color: transparent;
+                padding: 7px 18px;
+                border: 2px solid $color--green;
+
+                @include onDesktop {
+                    padding: 8px 18px;
+                }
+            }
+        }
+
+        &-image {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 178px;
+
+            @include onDesktop {
+                background-image: url('./images/header__main-image.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                height: 487px;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 560px;
+
+                height: 540px;
+                background: radial-gradient(circle, rgba(89, 51, 141, 0.7) 0%, rgba(89, 51, 141, 0) 70%);
+                transform: translateX(-50%) translateY(-50%);
+                /* Фіолетовий градієнт, який розмивається */
+                border-radius: 50%;
+
+                z-index: -1;
+
+            }
+        }
+    }
+
+    &__top {
+        width: 100%;
+
+        &-logo {
+            display: block;
+            width: 65px;
+            height: 26px;
+            background-image: url("./images/logo-mobile.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: 100%;
+            transition: all 0.3s;
+
+            &:hover {
+                transform: translateX(5px) scale(110%);
+            }
+        }
+
+        &--desktop {
+            display: none;
+
+            @include onDesktop {
+                display: block;
+            }
+        }
+
+        &--mobile {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 23px;
+            padding-right: 29px;
+            margin-bottom: 53px;
+
+            @include onDesktop {
+                display: none;
+            }
+        }
+    }
+
+    &__nav {
+        width: max-content;
+        margin: 0 auto;
+
+        &-list {
+            display: flex;
+            width: fit-content;
+            gap: 80px;
+
+            &__item {
+                list-style: none;
+            }
+        }
+
+        &-link {
+            font-family: "Roboto Serif", sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 17.57px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: $color--white;
+
+            &:hover {
+                font-size: 17px;
+                font-weight: 700;
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    &__title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 35px;
+        font-weight: 700;
+        line-height: 42.67px;
+        padding-bottom: 43px;
+
+        background: linear-gradient(90deg, #00C2FF 0%, #999999 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-transform: uppercase;
+        display: inline-block;
+
+        @include onDesktop {
+            padding-bottom: 61px;
+        }
+    }
+
+    &__container {
+        text-align: center;
+        width: 100%;
+        padding: 0 274px;
+        margin: 0 auto;
+    }
+
+    &__blocks {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px;
+
+        @include onDesktop {
+            flex-wrap: nowrap;
+            padding: 0;
+        }
+
+        &-container {
+            width: 100%;
+            border-radius: 10px;
+            position: relative;
+
+            @media screen and (max-width: 1200px) {
+                flex-basis: 43%;
+                height: 74px;
+            }
+
+            @include onDesktop {
+                height: 121px;
+            }
+
+
+            @include onDesktop {
+                flex: 1 1 0;
+                width: 0;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -1px;
+                /* Adjust based on border width */
+                left: -1px;
+                /* Adjust based on border width */
+                right: -1px;
+                /* Adjust based on border width */
+                bottom: -1px;
+                /* Adjust based on border width */
+                background: linear-gradient(180deg, #BBBF00, #575900);
+                border-radius: 10px;
+                /* Match the border-radius of the block */
+                z-index: -1;
+            }
+
+        }
+    }
+
+    &__card {
+        width: 100%;
+        height: 100%;
+        padding: 0 6px 7px;
+        display: flex;
+        position: relative;
+        justify-content: center;
+        border-radius: 10px;
+        align-items: flex-end;
+        // border-width: 1px;
+        // border-style: solid;
+        // border-image: linear-gradient(#f6b73c, #4d9f0c) 30;
+
+        background-color: rgba(44, 37, 84, 1);
+        overflow: hidden;
+
+        @include onDesktop {
+            padding: 0 15px 22px;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(28, 27, 63, 1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        &-title {
+            font-family: "Montserrat Alternates", sans-serif;
+            text-align: center;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 12.19px;
+
+            @include onDesktop {
+                font-size: 20px;
+                line-height: 24.38px;
+            }
+        }
+
+        &-icon {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 85px;
+            height: 85px;
+            z-index: 2;
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1512px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+
+    @include onDesktop {
+        padding: 0 120px;
+    }
+
+    @media screen and (min-width: 1500px) {
+        padding: 0 274px;
+    }
+}
+
+.subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18.29px;
+
+    @include onDesktop {
+        font-family: "Roboto Mono", sans-serif;
+        font-size: 20px;
+        line-height: 26.38px;
+    }
+
+    &--white {
+        color: $color--white;
+    }
+
+    &--blue {
+        color: $color--light-blue;
+    }
+}
+
+.title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.48px;
+    text-align: center;
+
+    @include onDesktop {
+        font-size: 35px;
+        line-height: 42.67px;
+    }
+
+    &--blue {
+        color: $color--light-blue;
+    }
+
+    &--white {
+        color: $color--white;
+    }
+}
+
+.algorithm {
+    width: 100%;
+    padding-top: 26px;
+    padding-bottom: 30px;
+    background: linear-gradient(180deg, #191620 0%, #28265C 100%);
+    box-shadow: 0px 4px 124.1px 0px rgba(0, 0, 0, 0.25) inset;
+    position: relative;
+    z-index: 0;
+
+    &__top-link {
+        display: none;
+
+        @include onDesktop {
+            display: block;
+            content: "";
+            position: absolute;
+            top: -30px;
+            // top: -63px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 74px;
+            height: 47px;
+            background-image: url('./images/arrows_button-img.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            transition: all 0.5s;
+
+            &:hover {
+                height: 77px;
+            }
+        }
+    }
+
+    @include onDesktop {
+        padding-top: 142px;
+        padding-bottom: 117px;
+        box-shadow: 0px 200px 10em 150px #28265C;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 17px;
+        width: 100%;
+
+        @include onDesktop {
+            gap: 62px;
+            flex-direction: row;
+        }
+    }
+
+    &__block {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 275px;
+            height: 109px;
+            z-index: -1;
+            background: rgba(14, 10, 181, 0.64);
+            box-shadow: 0px 4px 4px 0px rgba(14, 10, 181, 1);
+            border-radius: 70%;
+
+            @include onDesktop {
+                width: 381px;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -44px;
+            width: 275px;
+            height: 109px;
+            z-index: -2;
+            background: rgba(4, 0, 145, 1);
+            box-shadow: 0px 4px 4px 0px rgba(4, 0, 145, 1);
+            border-radius: 70%;
+
+            @include onDesktop {
+                width: 381px;
+            }
+        }
+
+        &--background {
+            display: none;
+
+            @include onDesktop {
+                display: block;
+                position: absolute;
+                width: 548px;
+                height: 548px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(89, 51, 141, 1) 10%, rgba(89, 51, 141, 0) 70%);
+
+                bottom: 0;
+                transform: translateY(20%);
+                z-index: -3;
+            }
+        }
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        @include onDesktop {
+            justify-content: flex-start;
+            align-items: flex-end;
+            margin-top: 76px;
+        }
+    }
+
+    &__subtitle {
+        font-family: "Montserrat Alternates", sans-serif;
+        z-index: 1;
+
+        @include onDesktop {
+            font-family: "Roboto Mono", sans-serif;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__title {
+        font-family: "Montserrat", sans-serif;
+        z-index: 1;
+        margin-bottom: 19px;
+
+        @include onDesktop {
+            text-align: right;
+            margin-top: 10px;
+            margin-bottom: 16px;
+        }
+    }
+
+    &__button {
+        font-family: "Roboto Serif", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 17.57px;
+        padding: 8px 13px;
+        border-radius: 6px;
+
+        background-color: $color--green;
+        z-index: 2;
+    }
+
+}
+
+.reviews {
+    padding-top: 33px;
+    padding-bottom: 70px;
+    position: relative;
+    z-index: 1;
+
+    @media screen and (max-width: 700px) {
+        overflow: hidden;
+    }
+
+    &::before {
+        width: 224px;
+        height: 224px;
+        content: "";
+        position: absolute;
+        background: radial-gradient(circle, rgba(89, 51, 141, 1) 10%, rgba(89, 51, 141, 0) 70%);
+        left: 0;
+        transform: translateX(-20%) translateY(20%);
+        bottom: 0;
+        border-radius: 50%;
+        z-index: 1;
+
+        @include onDesktop {
+            display: none;
+        }
+    }
+
+    &__box {
+        margin-top: 44px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        &--desktop {
+            display: none;
+
+            @include onDesktop {
+                display: flex;
+            }
+        }
+    }
+
+    &__title {
+        text-align: left;
+        z-index: 3;
+        position: relative;
+
+        @include onDesktop {
+            text-align: center;
+        }
+
+        &--small {
+            @media screen and (max-width: 700px) {
+                font-size: 15px;
+                line-height: 18.29px;
+                text-align: left;
+            }
+
+        }
+    }
+
+    &__image {
+        position: relative;
+        width: 374px;
+        height: 732px;
+        border-radius: 12px;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 2px solid rgba(0, 194, 255, 1);
+
+        &--1 {
+            background-image: url('./images/review__image--2.jpg');
+        }
+
+        &--2 {
+            background-image: url('./images/review__image--1.jpg');
+        }
+
+        &--3 {
+            background-image: url('./images/review__image--3.jpg');
+        }
+
+
+        &--small {
+            width: 260px;
+            height: 601px;
+            z-index: 5;
+        }
+
+        &--with-circle {
+            &::before {
+                width: 918px;
+                height: 918px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translateX(-250px) translateY(-250px);
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(89, 51, 141, 0.7) 30%, rgba(89, 51, 141, 0) 70%);
+                z-index: -1;
+                content: "";
+
+            }
+        }
+
+    }
+
+    &__slider {
+        &-image {
+            width: 100%;
+            height: 612px;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 194, 255, 1);
+            background-position: top;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            &--1 {
+                background-image: url('./images/review__image--2.jpg');
+            }
+
+            &--2 {
+                background-image: url('./images/review__image--1.jpg');
+            }
+
+            &--3 {
+                background-image: url('./images/review__image--3.jpg');
+            }
+
+            &--4 {
+                background-image: url('./images/review__image--4.jpg');
+            }
+
+            &--5 {
+                background-image: url('./images/review__image--5.jpg');
+            }
+        }
+    }
+}
+
+.button {
+    transition: all 0.3s;
+    color: $color--white;
+    text-decoration: none;
+
+    &:hover {
+        transform: scale(105%);
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    &:active {
+        background-color: rgb(48, 125, 108);
+    }
+}
+
+.footer {
+    width: 100%;
+    background: linear-gradient(0deg, #070509 -6.28%, #282D60 106.49%);
+    box-shadow: 0px 4px 124.1px 0px rgba(0, 0, 0, 0.25) inset;
+    padding-top: 20px;
+    padding-bottom: 44px;
+
+    @include onDesktop {
+        padding-top: 176px;
+        padding-bottom: 64px;
+        background: transparent;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__title {
+        font-family: "Montserrat Alternates", sans-serif;
+        font-size: 25px;
+        font-weight: 700;
+        line-height: 30.35px;
+        text-align: center;
+        margin: 23px 0;
+
+
+        @include onDesktop {
+            font-size: 35px;
+            font-weight: 900;
+            line-height: 42.49px;
+
+            margin-top: 37px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__button {
+        font-family: "Roboto Serif", sans-serif;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14.05px;
+        padding: 8px 18px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        text-align: center;
+
+        background-color: $color--green;
+
+        @include onDesktop {
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 18px;
+
+            padding: 11px 16px;
+        }
+    }
+}
+
+.swiper-slide {
+    margin: 0 !important;
+    /* Ensure no extra margins */
+    padding: 0 !important;
+    /* Ensure no extra padding */
+}
+
+.swiper {
+    &--mobile {
+        @include onDesktop {
+            display: none !important;
+        }
+    }
+}
